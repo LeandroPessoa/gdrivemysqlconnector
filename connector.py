@@ -81,8 +81,8 @@ def load_file(filename):
 	file.close()
 
 def convert(filename):
-
-	odo(filename+'.csv', 'postgresql://meta:klapaucius@localhost:5432::Despesas', dshape='var * {id: int64, nome: string, data: string, valor: string}')
+	file = pd.read_csv(filename+'.csv',index_col='nome')
+	odo(file, 'postgresql://meta:klapaucius@localhost:5432/metabase_db::Despesas')
 
 
 def main():
